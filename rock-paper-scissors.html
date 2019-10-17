@@ -1,0 +1,64 @@
+<script>
+function computerPlay() {
+	let things = ['rock', 'paper', 'scissors'];
+	let thing = things[Math.floor(Math.random()*things.length)];
+	return (thing);
+}
+
+let computerSelection = computerPlay();
+playerScore = 0;
+computerScore = 0;
+
+function playRound(playerSelection, computerSelection) {
+	
+	if (playerSelection == computerSelection) {
+		return ("Draw! You both picked " + playerSelection + ".") 
+	}
+	else if (playerSelection == "rock" && computerSelection == "paper") {
+		++computerScore;
+		return ("You lose! Paper beats Rock.");
+	} else if (playerSelection == "rock" && computerSelection == "scissors") {
+		++playerScore;
+		return ("You win! Rock beats Scissors.");
+	} else if (playerSelection == "paper" && computerSelection == "rock") {
+		++playerScore;
+		return ("You win! Paper beats Rock.");
+	} else if (playerSelection == "paper" && computerSelection == "scissors") {
+		++computerScore;
+		return ("You lose! Scissors beats Paper.");
+	} else if (playerSelection == "scissors" && computerSelection == "rock") {
+		++computerScore;
+		return ("You lose! Rock beats Scissors.");
+	} else if (playerSelection == "scissors" && computerSelection == "paper") {
+		++playerScore;
+		return ("You win! Rock beats Scissors.");
+	}
+	else {
+		return ("You've done something wrong! Refresh the page.")
+	}
+
+} 
+
+function game() {
+     	let computerSelection = computerPlay();
+	let playerSelection = prompt("Rock, Paper or Scissors?");
+	playerSelection = playerSelection.toLowerCase();		
+	console.log(playRound(playerSelection, computerSelection)); 	
+}
+
+
+while (playerScore < 5 && computerScore < 5) {
+	game();
+	result = "Your score: " + playerScore + " | " + "Computer's score: " + computerScore;
+	console.log(result)
+}
+
+if (playerScore || computerScore == 5) {
+		if (playerScore == 5) {
+			console.log("Game over! You win!")
+			} else if (computerScore == 5) {
+			console.log("Game over! You lose!");
+}
+} 	 
+
+</script>
